@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Page Title -->
+	<title>Age Guesser</title>
+
+	<style>
+	
+	/*style tag colors in text elements in web page.*/
+
+	/*colors in the page body*/
+	body{
+		background-color: #228b22;
+	}
+
+	/*colors in the title of calculator*/
+	h1{
+		color: white;
+	}
+
+	/*colors in the messages*/
+	#line{
+		color: white;
+	}
+
+</style>
+
+</head>
+<body>
+
+	<center>
+
+		<!-- Calculator Title -->
+		<h1>Age Guesser!</h1>
+
+		<!-- Initial prompt, will be changed through out process. -->
+		<p id="line">Type in a number from 1-10, then press "Submit" to start!</p>
+
+		<!-- two different forms that take in numbers as input. -->
+		<input type="number" id="form">></input>
+		<input type="hidden" id="form2">></input>
+
+		<!-- the submit button -->
+		<button id="submit">Submit</button>
+
+		<!-- the yes and no buttons -->
+		<button id="yes">Yes</button>
+		<button id="no">No</button>
+
+		<!-- the second yes button -->
+		<button id="yes1">Yes</button>
+
+		<!-- the brains of the calculator -->
+		<script type="text/javascript">
+
+			//sets each yes or no button as hidden
+			document.getElementById("yes").style.visibility = "hidden";
+			document.getElementById("yes1").style.visibility = "hidden";
+			document.getElementById("no").style.visibility = "hidden";
+
+			//declares control variables
+			var number = 0;
+			var newID = "form";
+
+			//if second yes button clicked, will restart calculator
+			document.getElementById("yes1").onclick = function(){
+
+				//resets forms
+				document.getElementById("form").value = "";
+				document.getElementById("form2").value = "";
+
+				//resets number variable
+				number = 0;
+
+				//new prompt
+				document.getElementById("line").innerHTML = "Type in a number from 1-10, then press \"Submit\" to start!";
+
+				//resets control variable
+				newID = "form";
+
+				//brings back the first text box
+				document.getElementById("form").type = "number";
+
+				//sets submit button to visible
+				document.getElementById("submit").style.visibility = "visible";
+				//sets second yes button to hidden
+				document.getElementById("yes1").style.visibility = "hidden";
+				return;
+
+			}
+
+			//yes button is part of the second question
+			document.getElementById("yes").onclick = function(){
+
+				number += 1768;
+
+				//new prompt
+				document.getElementById("line").innerHTML = "Type in the year you were born.";
+				newID = "form2";
+				//brings up the second text box
+				document.getElementById("form2").type = "number";
+				//sets both yes and no to hidden
+				document.getElementById("yes").style.visibility = "hidden";
+				document.getElementById("no").style.visibility = "hidden";
+				//sets submit button to visible
+				document.getElementById("submit").style.visibility = "visible";
+				return;
+
+			}
+
+			//no button is part of the second question
+			document.getElementById("no").onclick = function(){
+
+				number += 1767;
+
+				//new prompt
+				document.getElementById("line").innerHTML = "Type in the year you were born.";
+				newID = "form2";
+				//brings up the second text box
+				document.getElementById("form2").type = "number";
+				//sets both yes and no to hidden
+				document.getElementById("yes").style.visibility = "hidden";
+				document.getElementById("no").style.visibility = "hidden";
+				//sets submit button to visible
+				document.getElementById("submit").style.visibility = "visible";
+				return;
+
+			}
+
+			//function of submit button
+			document.getElementById("submit").onclick = function(){
+
+				/*
+
+				(newID == "form"): submit button will take in a number from 1-10. If not valid or null, alerts user.
+				If number is valid, then it will set "number" variable to input value, multiply by 2, add by 5,
+				then multiply by 50. 
+
+				(newID == "form2"): submit button will take in a number, which is person's birth year. If null, alerts user.
+				If number exists, then it will subtract "number" variable with input value, then prints out result.
+
+				*/
+
+				if(newID == "form"){
+					if(isNaN(document.getElementById("form").value) || document.getElementById("form").value.length == 0){
+						document.getElementById("line").innerHTML = "That's not a number silly! Type in a number from 1-10!";
+						return;
+					}
+					else if(document.getElementById("form").value < 1 || document.getElementById("form").value > 10){
+						document.getElementById("line").innerHTML = "Invalid number! Type in a number from 1-10!";
+						return;
+					}
+					else{
+						number = document.getElementById("form").value;
+						number *= 2;
+						number += 5;
+						number *= 50;
+						document.getElementById("line").innerHTML = "Did you have your birthday yet this year? Click yes or no.";
+
+						document.getElementById("form").type = "hidden";
+
+						newID = "form1";
+
+						document.getElementById("submit").style.visibility = 'hidden';
+
+						document.getElementById("yes").style.visibility = "visible";
+						document.getElementById("no").style.visibility = "visible";
+
+						return;
+					}
+				}
+
+				if(newID == "form2"){
+					if(isNaN(document.getElementById("form2").value) || document.getElementById("form").value.length == 0){
+						document.getElementById("line").innerHTML = "That's not a number stupid!\nType in a numberical answer!";
+						return;
+					}
+					else{
+						number -= document.getElementById("form2").value;
+
+						document.getElementById("line").innerHTML = "Your number is: " + number + ". The first number is the number you chose, and the next two numbers is your age! :) Restart? Click yes!";
+
+						document.getElementById("form2").type = "hidden";
+						newID = "form3";
+
+						document.getElementById("submit").style.visibility = 'hidden';
+						document.getElementById("yes1").style.visibility = "visible";
+
+						return;
+					}
+				}
+			}
+
+		</script>
+
+	</center>
+
+
+</body>
+</html>
