@@ -42,8 +42,8 @@
 		<p id="line">Type in a number from 1-10, then press "Submit" to start!</p>
 
 		<!-- two different forms that take in numbers as input. -->
-		<input type="number" id="form">></input>
-		<input type="hidden" id="form2">></input>
+		<input type="number" id="form"/></input>
+		<input type="hidden" id="form2"/></input>
 
 		<!-- the submit button -->
 		<button id="submit">Submit</button>
@@ -176,7 +176,7 @@
 				}
 
 				if(newID == "form2"){
-					if(isNaN(document.getElementById("form2").value) || document.getElementById("form").value.length == 0){
+					if(isNaN(document.getElementById("form2").value) || document.getElementById("form2").value.length == 0){
 						document.getElementById("line").innerHTML = "That's not a number stupid!\nType in a numberical answer!";
 						return;
 					}
