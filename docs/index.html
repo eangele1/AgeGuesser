@@ -97,7 +97,9 @@
 			//yes button is part of the second question
 			document.getElementById("yes").onclick = function(){
 
-				number += 1768;
+				var currYear = new Date().getFullYear();
+
+				number += currYear - 250;
 
 				//new prompt
 				document.getElementById("line").innerHTML = "Type in the year you were born.";
@@ -116,7 +118,9 @@
 			//no button is part of the second question
 			document.getElementById("no").onclick = function(){
 
-				number += 1767;
+				var currYear = new Date().getFullYear();
+
+				number += currYear - 251;
 
 				//new prompt
 				document.getElementById("line").innerHTML = "Type in the year you were born.";
